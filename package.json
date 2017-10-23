@@ -1,0 +1,27 @@
+{
+  "name": "liri-node-app",
+  "version": "1.0.0",
+  "description": "\"HW 9 - twitter, spotify and ombd\"",
+  "main": "keys.js",
+  "dependencies": {
+    "spotify": "^0.3.0",
+    "fs": "0.0.2",
+    "request": "^2.74.0",
+    "twitter": "^1.7.1"
+
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJ-Code/liri-node-app.git"
+  },
+  "author": "jj-code",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JJ-Code/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/JJ-Code/liri-node-app#readme"
+}
