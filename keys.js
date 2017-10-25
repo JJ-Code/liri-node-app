@@ -7,7 +7,6 @@ var twitterKeys = {
   access_token_secret: "WwfAfDHRUchCnm8AZFGeMzlHjnNoZ1LV2IowGShI93XWu",
 }
 
-module.exports = twitterKeys;
 
 
 var spotiyKeys = {
@@ -15,4 +14,7 @@ var spotiyKeys = {
   client_secert: "0581f6267bbc4c35b28cec44df2080cf"
 }
 
-module.exports = spotiyKeys;
+
+
+module.exports = {twitterKeys: twitterKeys,
+spotiyKeys: spotiyKeys}

@@ -4,7 +4,7 @@
   "description": "\"HW 9 - twitter, spotify and ombd\"",
   "main": "keys.js",
   "dependencies": {
-    "spotify": "^0.3.0",
+    "node-spotify-api": "^1.0.7",
     "fs": "0.0.2",
     "request": "^2.74.0",
     "twitter": "^1.7.1"

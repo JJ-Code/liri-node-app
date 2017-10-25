@@ -2,8 +2,8 @@
 var keys = require("./keys.js");
 
 //npm packages dependencies and files
-var twitter = require("twitter")
-var spotify = require('spotify');
+var Twitter = require("twitter")
+var Spotify = require('node-spotify-api');
 var fs = require('fs'); //read and write file
 var request = require('request'); // allows for requests to APIs
 
@@ -14,7 +14,8 @@ var lookUpTitle = process.argv[3]
 
 
 //Switch statements to declare what action to excute
-function switchCommand() {
+function switchCommand(param) {
+  userCommand = userCommand || param
   switch (userCommand) {
     case "my-tweets":
       twitterGrab();
@@ -38,7 +39,7 @@ function switchCommand() {
 
 function twitterGrab() {
   console.log("My tweets:");
-  var client = new twitter(keys.twitterKeys);
+  var client = new Twitter(keys.twitterKeys);
   var parameters = {
     screen_name: "JayJLiu",
     count: 20
@@ -89,6 +90,12 @@ function ombdGrab() {
 
 
 function spotifyGrab() {
+  console.log(keys.spotiyKeys.client_id);
+  var spotify = new Spotify({
+    id: keys.spotiyKeys.client_id,
+    secret: keys.spotiyKeys.client_secert
+
+  })
   console.log("Music time!");
   //variable for search term, test if defined.
   var musicSearch;
@@ -106,32 +113,34 @@ function spotifyGrab() {
       console.log('Error occurred: ' + err);
       return;
     } else {
-      console.log("Artist: " + data.tracks.items[0].artists[0].name);
-      console.log("Song: " + data.tracks.items[0].name);
-      console.log("Album: " + data.tracks.items[0].album.name);
-      console.log("Preview Here: " + data.tracks.items[0].preview_url);
+
+      console.log("Artist: ",  data.tracks.items[0].artists[0].name);
+      console.log("Song: ",  data.tracks.items[0].name);
+      console.log("Album: ", data.tracks.items[0].album.name);
+      console.log("Preview Here: ", data.tracks.items[0].preview_url);
     }
   });
 }; //end spotifyGrab
 
 
 function doIt(){
-	console.log("Searching random.txt now");
-	fs.readFile("random.txt", "utf8", function(error, data) {
+
+  console.log("Searching random.txt now");
+	fs.readFile("./random.txt", "UTF8", function(error, data) {
 	    if(error){
      		console.log(error);
      	}else{
-
+        console.log(data)
      	//split data, declare variables
      	var dataArr = data.split(',');
         userCommand = dataArr[0];
         lookUpTitle = dataArr[1];
-        //if multi-word search term, add.
+        // //if multi-word search term, add.
         for(i=2; i<dataArr.length; i++){
-            secondCommand = lookUpTitle + "+" + dataArr[i];
+            lookUpTitle = lookUpTitle + "+" + dataArr[i];
         };
         //run action
-		switchCommand();
+		  switchCommand();
 
     	};//end else
 
