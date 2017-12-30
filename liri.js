@@ -114,8 +114,8 @@ function spotifyGrab() {
       return;
     } else {
 
-      console.log("Artist: ",  data.tracks.items[0].artists[0].name);
-      console.log("Song: ",  data.tracks.items[0].name);
+      console.log("Artist: ", data.tracks.items[0].artists[0].name);
+      console.log("Song: ", data.tracks.items[0].name);
       console.log("Album: ", data.tracks.items[0].album.name);
       console.log("Preview Here: ", data.tracks.items[0].preview_url);
     }
@@ -123,29 +123,29 @@ function spotifyGrab() {
 }; //end spotifyGrab
 
 
-function doIt(){
+function doIt() {
 
   console.log("Searching random.txt now");
-	fs.readFile("./random.txt", "UTF8", function(error, data) {
-	    if(error){
-     		console.log(error);
-     	}else{
-        console.log(data)
-     	//split data, declare variables
-     	var dataArr = data.split(',');
-        userCommand = dataArr[0];
-        lookUpTitle = dataArr[1];
-        // //if multi-word search term, add.
-        for(i=2; i<dataArr.length; i++){
-            lookUpTitle = lookUpTitle + "+" + dataArr[i];
-        };
-        //run action
-		  switchCommand();
+  fs.readFile("./random.txt", "UTF8", function(error, data) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(data)
+      //split data, declare variables
+      var dataArr = data.split(',');
+      userCommand = dataArr[0];
+      lookUpTitle = dataArr[1];
+      // //if multi-word search term, add.
+      for (i = 2; i < dataArr.length; i++) {
+        lookUpTitle = lookUpTitle + "+" + dataArr[i];
+      };
+      //run action
+      switchCommand();
 
-    	};//end else
+    }; //end else
 
-    });//end readfile
+  }); //end readfile
 
-};//end followTheTextbook
+}; //end followTheTextbook
 
 switchCommand(); //evoke switchCommand
