@@ -14,8 +14,8 @@ To run the application locally
 
 ### Commands to run Liri
 * node liri.js my-tweets
-* node liri.js spotify-this-song '<song name here>'
-* node liri.js movie-this '<movie name here>'
+* node liri.js spotify-this-song <song name here>
+* node liri.js movie-this <movie name here>
 * node liri.js do-what-it-says 
 
 ![Liri](liri-pic.png?raw=true)
